@@ -5,11 +5,11 @@ A standalone bridge application between MQTT and Kafka.
 
 
 ## Application Details
-MQTT is a the preferred go to protocol for IoT devices, due to its low protocol overhead. it was not built for data integration and data processing. In these scenaros, developers prefer kafka or similar event streaming platform to achieve event driven architecture to process data in motion.
+MQTT is the preferred go to protocol for IoT devices, due to its low protocol overhead. it was not built for data integration and data processing. In these scenarios, developers prefer kafka or similar event streaming platform to achieve event driven architecture to process data in motion.
 
 To clarify, MQTT and Kafka complement each other. So how we pass our huge amount of events from MQTT to kafka easily ? This is where **connector** comes to help.
 
-**Connector** is a highly scalable and fault tolerant Application which continiously pulls events from MQTT brokers and publishes those events to Air-Gapped kafka clusters with minimal latency. And depending on configuration, it can achieve fault tolerence, so when the application crashes or kafka cluster is offline, the messages are stored and published as soon as the cluster comes online.
+**Connector** is a highly scalable and fault tolerant Application which continuously pulls events from MQTT brokers and publishes those events to Air-Gaped kafka clusters with minimal latency. And depending on configuration, it can achieve fault tolerance, so when the application crashes or kafka cluster is offline, the messages are stored and published as soon as the cluster comes online.
 
 ## Deployment
 
@@ -72,7 +72,7 @@ and the required environment variables will be loaded from .env file.
 - `MQTT_BROKER_PORT` Specify Broker Port
 
 
-- `MQTT_CLIENT_ID` Specify the identitiy of the client
+- `MQTT_CLIENT_ID` Specify the identity of the client
 
 - `MQTT_USER_NAME` Set Username if auth-conf is added
 
@@ -87,7 +87,7 @@ and the required environment variables will be loaded from .env file.
 `TOPIC_LIST=default:default-kafka,custom:custom-kafka`
 maps IoT events from `default` topic to `default-kafka` topic in kafka and so on.
 
-- `WILDCARD_TOPIC_LIST` MQTT supports wildcard topic, allowing thousand of individual topic to map into a 
+- `WILDCARD_TOPIC_LIST` MQTT supports wildcard topic, allowing thousands of individual topic to map into a 
 
 single wildcard. Its is possible that a topic may end into multiple wildcards, in that scenario,
 connector will push it only into the first mapped kafka topic and will throw waring log.
@@ -95,12 +95,12 @@ Eg.  `WILDCARD_TOPIC_LIST="default/+/cars:cars,default/general/#:general"`
 
 - `INVOKE_LATENCY_SEC` Specify after how much time DbInvoke Should be called. This will try to publish all the messages stored in the database, which was previously failed to publish.
 
-- `INVOKE_MAX_GOROUTINE` no of maximum concorrent go routines to publish stored messages
+- `INVOKE_MAX_GOROUTINE` no of maximum concurrent go routines to publish stored messages
 - `INVOKE_MIN_GOROUTINE` number of go routines upon which DbInvoke will be called to spawn new goroutines
-- `KAFKA_BROKER` kafkka broker with port, Eg. `KAFKA_BROKER=localhost:9092`
+- `KAFKA_BROKER` kafka broker with port, Eg. `KAFKA_BROKER=localhost:9092`
 - `SASL_SSL` connector supports PLAINTEXT and SAS/OAUTHBEARER protocols. If set to false it will use PLAINTEXT (default)
-- `SASL_OAUTHBEARER_CLIENT_ID` if SASL_SSL=true then set Oauth CLient ID
-- `SASL_OAUTHBEARER_CLIENT_SECRET` Oauth Clinet Secret
+- `SASL_OAUTHBEARER_CLIENT_ID` if SASL_SSL=true then set Oauth Client ID
+- `SASL_OAUTHBEARER_CLIENT_SECRET` Oauth Client Secret
 - `SASL_OAUTHBEARER_TOKEN_ENDPOINT_URI` Oauth token Endpoint Providers URI
 
 Eg.  `SASL_OAUTHBEARER_TOKEN_ENDPOINT_URI=https://yourdomain.com/auth/realms/myrealm/protocol/openid-connect/token`
@@ -175,7 +175,7 @@ Start the subscriber
 ```
 ## Architecture
 
-Connector uses 4 channels to pass incomming events to the publish handler, 
+Connector uses 4 channels to pass incoming events to the publish handler, 
 
 or database insert handler after failure, database channel to restore messages failed 
 
