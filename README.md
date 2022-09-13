@@ -110,7 +110,7 @@ Eg.  `SASL_OAUTHBEARER_TOKEN_ENDPOINT_URI=https://yourdomain.com/auth/realms/myr
 Clone the project
 
 ```bash
-  git repo clone aiproshar/connector
+  git clone https://github.com/aiproshar/connector.git
 ```
 
 Go to the project directory  
@@ -137,7 +137,7 @@ Note: Connector Requires
 Go to the subscriber directory
 
 ```bash
-  cd cd clients/subscriber-kafka
+  cd clients/subscriber-kafka
 ```
 Configure the .env files as necessary (topic list)
 
